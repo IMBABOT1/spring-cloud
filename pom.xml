@@ -5,6 +5,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>product-service</module>
+		<module>cloud-common</module>
 
 	</modules>
 	<parent>
