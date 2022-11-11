@@ -8,6 +8,7 @@
 		<module>product-service</module>
 		<module>cloud-common</module>
 		<module>discovery-service</module>
+		<module>front-service</module>
 	</modules>
 
 	<parent>
