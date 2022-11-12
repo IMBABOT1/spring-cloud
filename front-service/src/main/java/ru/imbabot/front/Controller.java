@@ -3,13 +3,16 @@ package ru.imbabot.front;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import ru.imbabot.common.ProductDto;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 @RestController
 public class Controller {
@@ -17,15 +20,18 @@ public class Controller {
     private RestTemplate restTemplate;
 
     @Bean
-    @LoadBalanced
+   // @LoadBalanced
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
 
     @GetMapping("/api/v1/front")
-    public String getProducts(){
-       // List<Product> data = restTemplate.getForObject("http://localhost:53268/api/v1/products", ArrayList.class);
+    public List<ProductDto> getProducts(){
+     //   String data = restTemplate.getForObject("http://localhost:56401/api/v1/products", String.class);
+        List<ProductDto> data = restTemplate.getForObject("http://localhost:62308/api/v1/products", List.class);
 
-        return "data";
+        System.out.println(data);
+
+        return data;
     }
 }
