@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import ru.imbabot.common.ProductDto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,18 +19,14 @@ public class Controller {
     private RestTemplate restTemplate;
 
     @Bean
-   // @LoadBalanced
+    @LoadBalanced
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
 
     @GetMapping("/api/v1/front")
     public List<ProductDto> getProducts(){
-     //   String data = restTemplate.getForObject("http://localhost:56401/api/v1/products", String.class);
-        List<ProductDto> data = restTemplate.getForObject("http://localhost:62308/api/v1/products", List.class);
-
-        System.out.println(data);
-
+        List<ProductDto> data = restTemplate.getForObject("http://product-service/api/v1/products", List.class);
         return data;
     }
 }

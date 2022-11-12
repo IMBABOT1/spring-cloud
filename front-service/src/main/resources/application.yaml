@@ -2,7 +2,7 @@ spring:
   application:
     name: front-service
 server:
-  port: 0
+  port: 61630
 eureka:
   instance:
     hostname: localhost
